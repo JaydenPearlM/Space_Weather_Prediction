@@ -1,1 +1,49 @@
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Weather Predictor</title>
+
+    <!-- Link to your CSS file -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+
+    <!-- Link to Chart.js (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Space Weather Predictions</h1>
+    <!-- Canvas for Chart.js -->
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <!-- Chart renders here -->
+
+    <script>
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "line", // Chart type
+        data: {
+          labels: ["January", "February", "March", "April"], // X-axis labels
+          datasets: [
+            {
+              label: "Solar Flare Intensity",
+              data: [65, 59, 80, 81], // Sample data points
+              borderColor: "rgba(75, 192, 192, 1)", // Line color
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
